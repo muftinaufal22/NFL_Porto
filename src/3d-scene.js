@@ -59,10 +59,20 @@ export function initThreeScene() {
   renderer.setSize(sizes.width, sizes.height);
   renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
-  const heroStartX = isMobile ? 0 : 2.5;
+  // Hitung posisi X maksimum berdasarkan lebar layar saat ini supaya bola 3D tidak keluar frame
+  function getMaxOffsetX() {
+    const w = window.innerWidth;
+    if (w < 480) return 0.55;
+    if (w < 768) return 0.9;
+    if (w < 1024) return 1.8;
+    return 2.5;
+  }
+
+  let maxOffsetX = getMaxOffsetX();
+  const heroStartX = isMobile ? 0 : maxOffsetX;
   mesh.position.x = heroStartX;
   particlesMesh.position.x = heroStartX * 0.3;
-  const basePos = { x: 1.5, y: 0 };
+  const basePos = { x: maxOffsetX * 0.6, y: 0 };
 
   let isDragging = false, prevPos = { x: 0, y: 0 }, targetRot = { x: 0, y: 0 };
   canvas.style.touchAction = 'none';
@@ -76,9 +86,9 @@ export function initThreeScene() {
   });
   window.addEventListener('pointerup', () => { isDragging = false; });
 
-  gsap.to(basePos, { x: 2.5, scrollTrigger: { trigger: ".about-section", start: "top bottom", end: "center center", scrub: 1 } });
-  gsap.to(basePos, { x: 0, scrollTrigger: { trigger: ".projects-section", start: "top bottom", end: "center center", scrub: 1 } });
-  gsap.to(basePos, { x: -2.5, scrollTrigger: { trigger: ".contact-section", start: "top bottom", end: "center center", scrub: 1 } });
+  const aboutTrigger = gsap.to(basePos, { x: maxOffsetX, scrollTrigger: { trigger: ".about-section", start: "top bottom", end: "center center", scrub: 1 } });
+  const projectsTrigger = gsap.to(basePos, { x: 0, scrollTrigger: { trigger: ".projects-section", start: "top bottom", end: "center center", scrub: 1 } });
+  const contactTrigger = gsap.to(basePos, { x: -maxOffsetX, scrollTrigger: { trigger: ".contact-section", start: "top bottom", end: "center center", scrub: 1 } });
 
   const clock = new THREE.Clock();
   const tick = () => {
@@ -98,6 +108,10 @@ export function initThreeScene() {
     sizes.width = window.innerWidth; sizes.height = window.innerHeight;
     camera.aspect = sizes.width / sizes.height;
     camera.updateProjectionMatrix(); renderer.setSize(sizes.width, sizes.height);
+
+    // Update ulang offset X dan animasi scroll-trigger setiap kali ukuran layar berubah
+    maxOffsetX = getMaxOffsetX();
+    ScrollTrigger.refresh();
   });
 }
 
