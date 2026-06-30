@@ -144,7 +144,7 @@ if (window.location.pathname.includes("project-detail.html")) {
   const project = PROJECTS.find((p) => p.id === projectId);
 
   if (project) {
-    // Isi semua konten dulu
+    // Isi semua konten teks dulu
     document.title = `${project.title} — MHN.`;
     document.getElementById("d-role").textContent = project.role;
     document.getElementById("d-role2").textContent = project.role;
@@ -152,12 +152,6 @@ if (window.location.pathname.includes("project-detail.html")) {
     document.getElementById("d-desc").textContent = project.shortDesc;
     document.getElementById("d-year").textContent = project.year;
     document.getElementById("d-long").innerHTML = project.longDesc;
-
-    const imgEl = document.getElementById("d-img");
-    if (imgEl && project.image) {
-      imgEl.src = project.image;
-      imgEl.alt = project.title;
-    }
 
     const btnGithub = document.getElementById("d-github");
     if (btnGithub && project.github) btnGithub.href = project.github;
@@ -173,20 +167,42 @@ if (window.location.pathname.includes("project-detail.html")) {
       othersWrap.innerHTML += `<a href="project-detail.html?id=${p.id}" class="other-project-link"><span class="other-project-title">${p.title}</span><span class="other-project-role">${p.role}</span></a>`;
     });
 
-    // Tunggu DOM selesai render baru jalankan animasi
-    requestAnimationFrame(() => {
+    // Fungsi untuk menjalankan animasi entrance, dipanggil setelah gambar siap
+    const runDetailAnimation = () => {
       requestAnimationFrame(() => {
-        const els = ".back-btn, .detail-role, .detail-title, .detail-desc, .detail-meta, .detail-actions, .detail-image-wrap, .detail-content, .detail-sidebar";
-        gsap.set(els, { opacity: 0, y: 20 });
-        gsap.timeline({ defaults: { duration: 0.8, ease: "power3.out" } })
-          .to(".back-btn", { opacity: 1, y: 0, duration: 0.5 })
-          .to(".detail-role, .detail-title, .detail-desc", { opacity: 1, y: 0, stagger: 0.1 }, "-=0.3")
-          .to(".detail-meta", { opacity: 1, y: 0 }, "-=0.2")
-          .to(".detail-actions", { opacity: 1, y: 0 }, "-=0.2")
-          .to(".detail-image-wrap", { opacity: 1, y: 0, scale: 1, duration: 1.2, ease: "power4.out" }, "-=0.3")
-          .to(".detail-content, .detail-sidebar", { opacity: 1, y: 0 }, "-=0.3");
+        requestAnimationFrame(() => {
+          const els = ".back-btn, .detail-role, .detail-title, .detail-desc, .detail-meta, .detail-actions, .detail-image-wrap, .detail-content, .detail-sidebar";
+          gsap.set(els, { opacity: 0, y: 20 });
+          gsap.timeline({ defaults: { duration: 0.8, ease: "power3.out" } })
+            .to(".back-btn", { opacity: 1, y: 0, duration: 0.5 })
+            .to(".detail-role, .detail-title, .detail-desc", { opacity: 1, y: 0, stagger: 0.1 }, "-=0.3")
+            .to(".detail-meta", { opacity: 1, y: 0 }, "-=0.2")
+            .to(".detail-actions", { opacity: 1, y: 0 }, "-=0.2")
+            .to(".detail-image-wrap", { opacity: 1, y: 0, scale: 1, duration: 1.2, ease: "power4.out" }, "-=0.3")
+            .to(".detail-content, .detail-sidebar", { opacity: 1, y: 0 }, "-=0.3");
+        });
       });
-    });
+    };
+
+    // Preload gambar dulu sebelum animasi dijalankan, supaya tidak perlu refresh manual
+    const imgEl = document.getElementById("d-img");
+    if (imgEl && project.image) {
+      imgEl.alt = project.title;
+      const preloadImg = new Image();
+      preloadImg.onload = () => {
+        imgEl.src = project.image;
+        runDetailAnimation();
+      };
+      preloadImg.onerror = () => {
+        imgEl.style.display = "none";
+        const fallback = document.querySelector(".detail-image-fallback");
+        if (fallback) fallback.style.display = "flex";
+        runDetailAnimation();
+      };
+      preloadImg.src = project.image;
+    } else {
+      runDetailAnimation();
+    }
 
   } else {
     document.getElementById("d-title").textContent = "Proyek tidak ditemukan.";
