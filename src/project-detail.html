@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Detail Proyek — MHN.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <script type="module" crossorigin src="/assets/main-PXJTS4GF.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/main-0MY0QYEo.css">
+  <link rel="stylesheet" crossorigin href="/assets/projectDetail-BUuwutTw.css">
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="logo">M<span class="text-cyan">H</span>N.</div>
+    <div style="display:flex;align-items:center;gap:1.5rem;">
+      <div class="nav-links">
+        <a href="/index.html#home">Beranda</a>
+        <a href="/index.html#about">Tentang</a>
+        <a href="/index.html#skills">Keahlian</a>
+        <a href="/index.html#projects">Proyek</a>
+        <a href="/index.html#contact">Kontak</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="detail-page" id="detail-root">
+    <a href="/index.html#projects" class="back-btn">
+      <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <polyline points="15 18 9 12 15 6"></polyline>
+      </svg>
+      Kembali ke Proyek
+    </a>
+
+    <div class="detail-header">
+      <span class="detail-role" id="d-role"></span>
+      <h1 class="detail-title" id="d-title"></h1>
+      <p class="detail-desc" id="d-desc"></p>
+      <div class="detail-meta">
+        <div class="meta-item"><span class="meta-label">Tahun</span><span class="meta-value" id="d-year"></span></div>
+        <div class="meta-item"><span class="meta-label">Peran</span><span class="meta-value" id="d-role2"></span></div>
+        <div class="meta-item"><span class="meta-label">Status</span><span class="meta-value status-done">✦ Selesai</span></div>
+      </div>
+      <div class="detail-actions">
+        <a id="d-github" href="#" target="_blank" class="btn-primary" style="text-decoration:none;display:inline-flex;align-items:center;gap:0.5rem;border-radius:6px;">
+          <img src="https://cdn.jsdelivr.net/npm/simple-icons@v14/icons/github.svg" width="16" style="filter:invert(1)"> Kode Sumber
+        </a>
+        <a id="d-demo" href="#" target="_blank" class="btn-secondary" style="text-decoration:none;display:inline-flex;align-items:center;gap:0.5rem;border-radius:6px;">
+          Live Demo →
+        </a>
+      </div>
+    </div>
+
+    <div class="detail-image-wrap">
+      <img id="d-img" src="" alt="" class="detail-image" onerror="this.parentElement.classList.add('no-img')">
+      <div class="detail-image-fallback">[ Screenshot Proyek ]</div>
+    </div>
+
+    <div class="detail-body">
+      <div class="detail-content">
+        <h2>Tentang Proyek</h2>
+        <div id="d-long" class="detail-long"></div>
+        <h2 style="margin-top:3rem;">Fitur Utama</h2>
+        <ul class="feature-list" id="d-features"></ul>
+      </div>
+
+      <aside class="detail-sidebar">
+        <div class="sidebar-card">
+          <h3>Tech Stack</h3>
+          <div class="tech-stack" id="d-tech" style="flex-direction:column;gap:0.6rem;align-items:flex-start;"></div>
+        </div>
+        <div class="sidebar-card" style="margin-top:1.5rem;">
+          <h3>Proyek Lain</h3>
+          <div class="other-projects" id="d-others"></div>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  
+
+</body>
+</html>
