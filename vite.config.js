@@ -1,15 +1,13 @@
 import { defineConfig } from 'vite'
+import { resolve } from 'path'
 
 export default defineConfig({
-  base: '/NFL_Porto/',
   build: {
-    chunkSizeWarningLimit: 1000,
-    outDir: 'docs',
     rollupOptions: {
       input: {
-        main: 'index.html',
-        detail: 'src/project-detail.html'
+        main: resolve(__dirname, 'index.html'),
+        projectDetail: resolve(__dirname, 'src/project-detail.html'),
       }
     }
   }
-})  
+})
