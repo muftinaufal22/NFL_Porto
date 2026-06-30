@@ -8,7 +8,7 @@ export const PROJECTS = [
     longDesc: `<p>Sistem ini dikembangkan untuk RA Al Barokah guna mempermudah proses Penerimaan Peserta Didik Baru (PPDB). Dilengkapi dengan fitur pendaftaran online, upload persyaratan, serta dashboard admin untuk memantau data pendaftar secara real-time. Sistem ini dibangun dengan Laravel dan Bootstrap sehingga responsif di semua perangkat.</p>`,
     features: ["Pendaftaran Online Multi-Tahap", "Manajemen Data Siswa & Guru", "Cetak Laporan Pendaftaran", "Dashboard Admin Terintegrasi", "Notifikasi Status Pendaftaran"],
     tech: ["PHP", "Laravel", "MySQL", "Bootstrap", "Git"],
-    image: "../assets/foto_ra.png",
+    image: "../assets/foto_ra.webp",
     github: "https://github.com/muftinaufal22/ppdb-albarokah",
     demo: "#"
   },
@@ -21,7 +21,7 @@ export const PROJECTS = [
     longDesc: `<p>Aplikasi Web Kasir Pintar adalah solusi POS modern berbasis web untuk UMKM. Memungkinkan pemilik toko mencatat penjualan, mengelola stok secara otomatis, dan menyajikan laporan keuangan secara instan. Menggunakan TailwindCSS untuk tampilan yang super responsive.</p>`,
     features: ["Antarmuka Kasir Cepat", "Manajemen Stok Real-time", "Laporan Penjualan (Ekspor PDF)", "Multi-User Role", "Cetak Struk Langsung"],
     tech: ["PHP", "Laravel", "MySQL", "TailwindCSS", "Git"],
-    image: "../assets/foto_kasir.png",
+    image: "../assets/foto_kasir.webp",
     github: "https://github.com/muftinaufal22/web-kasir-pintar",
     demo: "#"
   },
@@ -34,7 +34,7 @@ export const PROJECTS = [
     longDesc: `<p>Platform MLM dengan logika jaringan referral kompleks (jaringan matahari). Dibangun menggunakan Next.js dan TypeScript. Mencakup fitur manajemen member, top-up saldo, dan perhitungan poin komisi otomatis.</p>`,
     features: ["Manajemen Jaringan Multi-Level", "Kalkulasi Poin Referral Otomatis", "NextAuth Authentication", "Validasi Zod Schema", "Notifikasi Real-time"],
     tech: ["Next.js", "TypeScript", "MongoDB", "NextAuth", "Zod", "Git", "TailwindCSS", "Cloudinary"],
-    image: "../assets/foto_mlm.png",
+    image: "../assets/foto_mlm.webp",
     github: "https://github.com/muftinaufal22/projek_mlm",
     demo: "#"
   },
@@ -47,7 +47,7 @@ export const PROJECTS = [
     longDesc: `<p>Aplikasi SPK ini dirancang untuk membantu pengambilan keputusan dalam menyeleksi kandidat (misal: karyawan terbaik atau penerima beasiswa) berdasarkan kriteria yang telah ditentukan. Menggunakan metode SAW (Simple Additive Weighting) untuk melakukan perangkingan secara objektif. Dibangun dengan CodeIgniter 4 dan MySQL.</p>`,
     features: ["Metode SAW (Simple Additive Weighting)", "Input Kriteria dan Bobot Dinamis", "Perangkingan Otomatis", "Laporan Hasil Seleksi", "Manajemen Data Kandidat"],
     tech: ["PHP", "CodeIgniter 4", "MySQL", "Bootstrap", "Git"],
-    image: "../assets/spk.jpg",
+    image: "../assets/spk.webp",
     github: "https://github.com/muftinaufal22/projek_spk",
     demo: "#"
   }
