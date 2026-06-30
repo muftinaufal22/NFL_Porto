@@ -2,9 +2,9 @@ import { defineConfig } from 'vite'
 import { resolve } from 'path'
 
 export default defineConfig({
-  base: '/',
+  base: '/NFL_Porto/',
   build: {
-    outDir: 'dist',
+    outDir: 'docs',
     rollupOptions: {
       input: {
         main: resolve(__dirname, 'index.html'),
